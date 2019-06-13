@@ -20,8 +20,11 @@
 
 
   <modules>
-     <module>../springMVC</module>
+     
       <module>spring</module>
+      <module>utils</module>
+      <module>springMVC</module>
+      <module>thread</module>
   </modules>
 
   <dependencies>
