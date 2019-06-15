@@ -209,34 +209,34 @@ public  class  Log  implements  Serializable{
                 + ", creDt=" + creDt + ", creTime=" + creTime + ", reserve1=" + reserve1 + ", reserve2=" + reserve2
                 + ", reserve3=" + reserve3 + ", reserve4=" + reserve4 + "]";
     }
-    /**
-     *  描述
-     *
-     * @param id
-     * @param userName
-     * @param content
-     * @param description
-     * @param creDt
-     * @param creTime
-     * @param reserve1
-     * @param reserve2
-     * @param reserve3
-     * @param reserve4
-     */
-    public Log(int id, String userName, String content, String description, String creDt, String creTime,
-               String reserve1, String reserve2, String reserve3, String reserve4) {
-        super();
-        this.id = id;
-        this.userName = userName;
-        this.content = content;
-        this.description = description;
-        this.creDt = creDt;
-        this.creTime = creTime;
-        this.reserve1 = reserve1;
-        this.reserve2 = reserve2;
-        this.reserve3 = reserve3;
-        this.reserve4 = reserve4;
-    }
+//    /**
+//     *  描述
+//     *
+//     * @param id
+//     * @param userName
+//     * @param content
+//     * @param description
+//     * @param creDt
+//     * @param creTime
+//     * @param reserve1
+//     * @param reserve2
+//     * @param reserve3
+//     * @param reserve4
+//     */
+//    public Log(int id, String userName, String content, String description, String creDt, String creTime,
+//               String reserve1, String reserve2, String reserve3, String reserve4) {
+//        super();
+//        this.id = id;
+//        this.userName = userName;
+//        this.content = content;
+//        this.description = description;
+//        this.creDt = creDt;
+//        this.creTime = creTime;
+//        this.reserve1 = reserve1;
+//        this.reserve2 = reserve2;
+//        this.reserve3 = reserve3;
+//        this.reserve4 = reserve4;
+//    }
 
 
 }
