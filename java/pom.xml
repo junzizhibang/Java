@@ -26,6 +26,7 @@
       <module>springMVC</module>
       <module>thread</module>
       <module>redis</module>
+    <module>thread</module>
 
   </modules>
 
