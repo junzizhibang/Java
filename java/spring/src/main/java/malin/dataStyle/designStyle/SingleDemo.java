@@ -9,7 +9,8 @@ package malin.dataStyle.designStyle;
  * 初始版本基础夯实积攒Java架构师的基础内容  Ideal
  *******************************************/
 /**
- * malin.dataStyle.designStyle  功能说明：   单例模式的设计示例
+ * malin.dataStyle.designStyle  功能说明：   单例模式的设计示例,懒汉模式天生就是线程安全,在类加载的时候就被初始化,
+ *            饿汉模式需要俩个null判断和俩个锁一个方法锁和类锁,才能保证安全
  * 			初始版本基础夯实积攒Java架构师的基础内容
  * @date   2019/6/17 11:41  今年一定要成为Java高级开发攻城狮
  * @author 马琳-君子自强，脚踏实地积累  SingleDemo.java
