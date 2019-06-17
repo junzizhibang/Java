@@ -9,6 +9,9 @@ package malin.beans;
  * 初始版本基础夯实积攒Java架构师的基础内容  Ideal
  *******************************************/
 
+import malin.dataStyle.annotation.PropertyAnnotation;
+import malin.dataStyle.annotation.TableAnnotation;
+
 import java.io.Serializable;
 
 /**
@@ -19,24 +22,37 @@ import java.io.Serializable;
  * @email 1217575485@qq.com
  *
  */
+@TableAnnotation("T_userInfo")
 public class UserInfo   implements  Serializable{
 
 
     /**
      * long
      */
-    private static final long serialVersionUID = 1L;
+   // private static final long serialVersionUID = 1L;
+    @PropertyAnnotation(name="id",length = 30)
     private   int	id   ;
+    @PropertyAnnotation(name="userName",length = 30)
     private   String	userName   ;
+    @PropertyAnnotation(name="content",length = 30)
     private   String	content   ;
+    @PropertyAnnotation(name="description",length = 30)
     private   String	description   ;
+    @PropertyAnnotation(name="passWord",length = 30)
     private   String	passWord   ;
+    @PropertyAnnotation(name="telNum",length = 30)
     private   String	telNum   ;
+    @PropertyAnnotation(name="age",length = 30)
     private   int	age   ;
+    @PropertyAnnotation(name="sex",length = 30)
     private   String	sex   ;
+    @PropertyAnnotation(name="reserve1",length = 30)
     private   String	reserve1   ;
+    @PropertyAnnotation(name="reserve2",length = 30)
     private   String	reserve2   ;
+    @PropertyAnnotation(name="reserve3",length = 30)
     private   String	reserve3   ;
+    @PropertyAnnotation(name="reserve4",length = 30)
     private   String	reserve4   ;
     /**
      *get方法
