@@ -16,15 +16,18 @@ import java.lang.annotation.Target;
 
 /**
  * malin.dataStyle.annotation  功能说明：     模拟一下注解模式,自定义注解
- * 			初始版本基础夯实积攒Java架构师的基础内容
- * @date   2019/6/17 15:55  今年一定要成为Java高级开发攻城狮
+ * 初始版本基础夯实积攒Java架构师的基础内容
+ *
  * @author 马琳-君子自强，脚踏实地积累  DemoAnnotation.java
+ * @date 2019/6/17 15:55  今年一定要成为Java高级开发攻城狮
  * @email 1217575485@qq.com
  */
-@Target(value ={ElementType.METHOD,ElementType.TYPE})
-@Retention(RetentionPolicy.RUNTIME  )
+@Target(value = {ElementType.METHOD, ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
 public @interface DemoAnnotation {
-    int  beadId()  default 0;
-    String className()  default "";
-    String []  arrays();
+    int beadId() default 0;
+
+    String className() default "";
+
+    String[] arrays();
 }

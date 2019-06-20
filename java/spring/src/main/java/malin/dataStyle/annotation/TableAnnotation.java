@@ -16,16 +16,18 @@ import java.lang.annotation.Target;
 
 /**
  * malin.dataStyle.annotation  功能说明：   表的映射
- * 			初始版本基础夯实积攒Java架构师的基础内容
- * @date   2019/6/17 16:03  今年一定要成为Java高级开发攻城狮
+ * 初始版本基础夯实积攒Java架构师的基础内容
+ *
  * @author 马琳-君子自强，脚踏实地积累  TableAnnotation.java
+ * @date 2019/6/17 16:03  今年一定要成为Java高级开发攻城狮
  * @email 1217575485@qq.com
  */
-@Target(value=ElementType.TYPE)
+@Target(value = ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface TableAnnotation {
     /**
      * 对应数据库表的名称
+     *
      * @return
      */
     String value();

@@ -18,14 +18,14 @@ public class UDPServer {
 
     public static void main(String[] args) throws IOException {
         System.out.println("UDP Server  端进行接收数据........");
-        DatagramSocket  datagramSocket=new DatagramSocket(8080);
-        byte []  bytes=new byte[256];
+        DatagramSocket datagramSocket = new DatagramSocket(8080);
+        byte[] bytes = new byte[256];
 
-        DatagramPacket datagramPacket=new DatagramPacket(bytes,bytes.length);
+        DatagramPacket datagramPacket = new DatagramPacket(bytes, bytes.length);
         datagramSocket.receive(datagramPacket);
-        System.out.println("收到来源:" +datagramPacket.getAddress().getHostAddress()+",端口号port:"+datagramPacket.getPort());
-        String message=new String(datagramPacket.getData(),0,datagramPacket.getLength());
-        System.out.println("收到的数据是: "+message);
+        System.out.println("收到来源:" + datagramPacket.getAddress().getHostAddress() + ",端口号port:" + datagramPacket.getPort());
+        String message = new String(datagramPacket.getData(), 0, datagramPacket.getLength());
+        System.out.println("收到的数据是: " + message);
         datagramSocket.close();
 
     }

@@ -12,10 +12,9 @@ package malin.algrithrim;
 /**
  * 功能说明：二叉树的  先序遍历.中序遍历/后序遍历
  *
- * @date 2019年5月15日
  * @author 马琳-君子自强，脚踏实地积累
+ * @date 2019年5月15日
  * @email 1217575485@qq.com
- *
  */
 public class NodeTree {
     int data; // 根节点数据
@@ -76,7 +75,7 @@ public class NodeTree {
     }
 
     public static void main(String[] args) {
-        int[] array = { 3,14,7,1,8,5,11,17,13,6,23,12,20,26,4,16,18,24,25,19,9,10,15,27,28,2  };
+        int[] array = {3, 14, 7, 1, 8, 5, 11, 17, 13, 6, 23, 12, 20, 26, 4, 16, 18, 24, 25, 19, 9, 10, 15, 27, 28, 2};
         NodeTree root = new NodeTree(array[0]); // 创建二叉树
         for (int i = 1; i < array.length; i++) {
             root.insert(root, array[i]); // 向二叉树中插入数据

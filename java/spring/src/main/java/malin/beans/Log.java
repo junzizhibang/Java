@@ -1,13 +1,20 @@
 package malin.beans;
 
-/******************************************** 
+/**
  * 模块名称: 工作三年经验，目标是成为JAVA高级开发攻城狮/Java 架构师我在努力！我能行！
  * 功能说明: 俩年迷惘期，回首时才发现自己想要的目标和清晰的职业规划
- * 开发人员: 马琳-君子自强，脚踏实地积累 
- * 开发时间:2019/6/13 21:14  今年一定要成为Java高级开发攻城狮 
- * v1.0.0.0 2019/6/13-01  [malin.beans]  1217575485@qq.com        
+ * 开发人员: 马琳-君子自强，脚踏实地积累
+ * 开发时间:2019/6/13 21:14  今年一定要成为Java高级开发攻城狮
+ * v1.0.0.0 2019/6/13-01  [malin.beans]  1217575485@qq.com
  * 初始版本基础夯实积攒Java架构师的基础内容  Ideal
- *******************************************/
+ * <p>
+ * 功能说明：
+ * 初始版本基础夯实积攒Java架构师的基础内容
+ *
+ * @date 2019年6月12日 今年一定要成为Java高级开发攻城狮
+ * @author 马琳-君子自强，脚踏实地积累
+ * @email 1217575485@qq.com
+ */
 
 /**
  *  功能说明：
@@ -20,7 +27,7 @@ package malin.beans;
 
 import java.io.Serializable;
 
-public  class  Log  implements  Serializable{
+public class Log implements Serializable {
 
     /**
      * long
@@ -28,16 +35,17 @@ public  class  Log  implements  Serializable{
     private static final long serialVersionUID = 1L;
 
 
-    private  int  id;
-    private String  userName;
-    private String  content;
-    private String  description;
-    private String  creDt;
-    private String  creTime;
-    private String  reserve1;
-    private String  reserve2;
-    private String  reserve3;
-    private String  reserve4;
+    private int id;
+    private String userName;
+    private String content;
+    private String description;
+    private String creDt;
+    private String creTime;
+    private String reserve1;
+    private String reserve2;
+    private String reserve3;
+    private String reserve4;
+
     /**
      *get方法
      *
@@ -46,6 +54,7 @@ public  class  Log  implements  Serializable{
     public int getId() {
         return id;
     }
+
     /**
      * set 方法
      *
@@ -54,6 +63,7 @@ public  class  Log  implements  Serializable{
     public void setId(int id) {
         this.id = id;
     }
+
     /**
      *get方法
      *
@@ -62,6 +72,7 @@ public  class  Log  implements  Serializable{
     public String getUserName() {
         return userName;
     }
+
     /**
      * set 方法
      *
@@ -70,6 +81,7 @@ public  class  Log  implements  Serializable{
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
     /**
      *get方法
      *
@@ -78,6 +90,7 @@ public  class  Log  implements  Serializable{
     public String getContent() {
         return content;
     }
+
     /**
      * set 方法
      *
@@ -86,6 +99,7 @@ public  class  Log  implements  Serializable{
     public void setContent(String content) {
         this.content = content;
     }
+
     /**
      *get方法
      *
@@ -94,6 +108,7 @@ public  class  Log  implements  Serializable{
     public String getDescription() {
         return description;
     }
+
     /**
      * set 方法
      *
@@ -102,6 +117,7 @@ public  class  Log  implements  Serializable{
     public void setDescription(String description) {
         this.description = description;
     }
+
     /**
      *get方法
      *
@@ -110,6 +126,7 @@ public  class  Log  implements  Serializable{
     public String getCreDt() {
         return creDt;
     }
+
     /**
      * set 方法
      *
@@ -118,6 +135,7 @@ public  class  Log  implements  Serializable{
     public void setCreDt(String creDt) {
         this.creDt = creDt;
     }
+
     /**
      *get方法
      *
@@ -126,6 +144,7 @@ public  class  Log  implements  Serializable{
     public String getCreTime() {
         return creTime;
     }
+
     /**
      * set 方法
      *
@@ -134,6 +153,7 @@ public  class  Log  implements  Serializable{
     public void setCreTime(String creTime) {
         this.creTime = creTime;
     }
+
     /**
      *get方法
      *
@@ -142,6 +162,7 @@ public  class  Log  implements  Serializable{
     public String getReserve1() {
         return reserve1;
     }
+
     /**
      * set 方法
      *
@@ -150,6 +171,7 @@ public  class  Log  implements  Serializable{
     public void setReserve1(String reserve1) {
         this.reserve1 = reserve1;
     }
+
     /**
      *get方法
      *
@@ -158,6 +180,7 @@ public  class  Log  implements  Serializable{
     public String getReserve2() {
         return reserve2;
     }
+
     /**
      * set 方法
      *
@@ -166,6 +189,7 @@ public  class  Log  implements  Serializable{
     public void setReserve2(String reserve2) {
         this.reserve2 = reserve2;
     }
+
     /**
      *get方法
      *
@@ -174,6 +198,7 @@ public  class  Log  implements  Serializable{
     public String getReserve3() {
         return reserve3;
     }
+
     /**
      * set 方法
      *
@@ -182,6 +207,7 @@ public  class  Log  implements  Serializable{
     public void setReserve3(String reserve3) {
         this.reserve3 = reserve3;
     }
+
     /**
      *get方法
      *
@@ -190,6 +216,7 @@ public  class  Log  implements  Serializable{
     public String getReserve4() {
         return reserve4;
     }
+
     /**
      * set 方法
      *
@@ -198,6 +225,7 @@ public  class  Log  implements  Serializable{
     public void setReserve4(String reserve4) {
         this.reserve4 = reserve4;
     }
+
     /**
      *  功能描述
      *

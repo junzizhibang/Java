@@ -18,9 +18,10 @@ import java.lang.reflect.Method;
 
 /**
  * malin.dataStyle.dataForm  功能说明：      获取类的对象的几种方式,1.new,2.Class.forName,3newInstance()[只能是无参的构造函数]
- * 			初始版本基础夯实积攒Java架构师的基础内容
- * @date   2019/6/15 14:43  今年一定要成为Java高级开发攻城狮
+ * 初始版本基础夯实积攒Java架构师的基础内容
+ *
  * @author 马琳-君子自强，脚踏实地积累  ClassForm.java
+ * @date 2019/6/15 14:43  今年一定要成为Java高级开发攻城狮
  * @email 1217575485@qq.com
  */
 public class ClassForm {
@@ -28,29 +29,29 @@ public class ClassForm {
     public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchFieldException {
         //1.new  得到的类对象,  同时也可以使用反射机制来创建对象
         //2.forName  必须传入class的类的完整路径
-        Class<?>  user=Class.forName("malin.beans.UserInfo");
+        Class<?> user = Class.forName("malin.beans.UserInfo");
         //3.newInstance  使用无参构造函数  创建对象new
-        UserInfo  userInfo= (UserInfo) user.newInstance();
-        System.out.println("user:"+userInfo);
+        UserInfo userInfo = (UserInfo) user.newInstance();
+        System.out.println("user:" + userInfo);
 //     运行结果:
 //        发送详情 [接收人姓名=null,手机号码=0,短信内容=null
 //        user:UserInfo [userName=null, id=0, content=null, description=null, passWord=null, telNum=null, age=0, sex=null, reserve1=null, reserve2=null, reserve3=null, reserve4=null]
 
-        Class<?>  logObject=Class.forName("malin.beans.Log");
-        Method []  allMethod=logObject.getMethods();//获取所有的方法名称
-        for (Method method:allMethod) {
-            System.out.println(method.getName()+"---"+method.getReturnType()+"----"+method.getModifiers());
+        Class<?> logObject = Class.forName("malin.beans.Log");
+        Method[] allMethod = logObject.getMethods();//获取所有的方法名称
+        for (Method method : allMethod) {
+            System.out.println(method.getName() + "---" + method.getReturnType() + "----" + method.getModifiers());
         }
         Field[] fields = logObject.getDeclaredFields();  //拿到所有的成员属性
         for (Field field :
                 fields) {
-            System.out.println("获取到的成员属性  "+field.getName());
+            System.out.println("获取到的成员属性  " + field.getName());
         }
-        Field  field=logObject.getDeclaredField("userName");
-        Log log= (Log) logObject.newInstance();//这里的Log一定是无参构造函数不然会出现错误的!!!
+        Field field = logObject.getDeclaredField("userName");
+        Log log = (Log) logObject.newInstance();//这里的Log一定是无参构造函数不然会出现错误的!!!
         field.setAccessible(true);
-        field.set(log,"马云");
-        System.out.println("处理过后的数值  "+log.toString());//这回
+        field.set(log, "马云");
+        System.out.println("处理过后的数值  " + log.toString());//这回
 
 
     }

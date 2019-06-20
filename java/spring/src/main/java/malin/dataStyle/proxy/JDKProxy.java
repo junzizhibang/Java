@@ -1,7 +1,6 @@
 package malin.dataStyle.proxy;
 
 
-
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -22,31 +21,33 @@ import java.lang.reflect.Proxy;
  * 1.编写需要被代理的类和接口（我这里就是OrderServiceImpl、OrderService）；
  * 2、编写代理类（例如我这里的DynamicLogProxy），需要实现InvocationHandler接口，重写invoke方法；
  * 3、使用Proxy.newProxyInstance(ClassLoader loader,Class<?>[] interfaces,InvocationHandler h)动态创建代理类对象，通过代理类对象调用业务方法。
- * 			初始版本基础夯实积攒Java架构师的基础内容
- * @date   2019/6/17 20:53  今年一定要成为Java高级开发攻城狮
+ * 初始版本基础夯实积攒Java架构师的基础内容
+ *
  * @author 马琳-君子自强，脚踏实地积累  JDKProxy.java
+ * @date 2019/6/17 20:53  今年一定要成为Java高级开发攻城狮
  * @email 1217575485@qq.com
  */
-public class JDKProxy   implements InvocationHandler {
+public class JDKProxy implements InvocationHandler {
 
-    private  Object target;
+    private Object target;
 
-    private  JDKProxy(Object target){
-        this.target=target;
+    private JDKProxy(Object target) {
+        this.target = target;
     }
+
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println("我是金牌服务员,.....开始服务吧,买车还是买房?");
-        Object object=method.invoke(target,args);
+        Object object = method.invoke(target, args);
         System.out.println("我是皇帝专供.....陛下已经买完了房子买完车.");
 
         return object;
     }
 
     public static void main(String[] args) {
-        WulingCar  wulingCar=new WulingCar();
-        JDKProxy  jdkProxy=new JDKProxy(wulingCar);
-        Car  car=(Car)Proxy.newProxyInstance(wulingCar.getClass().getClassLoader(),wulingCar.getClass().getInterfaces(),jdkProxy);
+        WulingCar wulingCar = new WulingCar();
+        JDKProxy jdkProxy = new JDKProxy(wulingCar);
+        Car car = (Car) Proxy.newProxyInstance(wulingCar.getClass().getClassLoader(), wulingCar.getClass().getInterfaces(), jdkProxy);
         car.buyCar();
     }
 }

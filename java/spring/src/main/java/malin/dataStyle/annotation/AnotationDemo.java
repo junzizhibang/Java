@@ -13,11 +13,13 @@ import java.util.List;
  * v1.0.0.0 2019/6/17-01  [malin.dataStyle.designStyle]  1217575485@qq.com        
  * 初始版本基础夯实积攒Java架构师的基础内容  Ideal
  *******************************************/
+
 /**
  * malin.dataStyle.annotation  功能说明：      使用Java自定义注解,模拟ORM框架注解版本
- * 			初始版本基础夯实积攒Java架构师的基础内容
- * @date   2019/6/17 19:03  今年一定要成为Java高级开发攻城狮
+ * 初始版本基础夯实积攒Java架构师的基础内容
+ *
  * @author 马琳-君子自强，脚踏实地积累  AnotationDemo.java
+ * @date 2019/6/17 19:03  今年一定要成为Java高级开发攻城狮
  * @email 1217575485@qq.com
  */
 public class AnotationDemo {
@@ -25,43 +27,46 @@ public class AnotationDemo {
     public static void main(String[] args) throws ClassNotFoundException {
         System.out.println(getORMStr());
     }
-    @DemoAnnotation(beadId = 1,className = "className",arrays = {"111111","666666"})
-    public   void  add(){
+
+    @DemoAnnotation(beadId = 1, className = "className", arrays = {"111111", "666666"})
+    public void add() {
 
     }
+
     @SuppressWarnings("all")
-    public   void  save(){
-        List  list=new ArrayList();
+    public void save() {
+        List list = new ArrayList();
     }
 
     /**
      * 模拟ORM的映射数据库查询语句,返回SQL
+     *
      * @return
      * @throws ClassNotFoundException
      */
     public static String getORMStr() throws ClassNotFoundException {
         //1.反射class
-        Class <?> forName=Class.forName("malin.beans.UserInfo");
+        Class<?> forName = Class.forName("malin.beans.UserInfo");
         //2.获取表名称注解
-        TableAnnotation tableAnnotation=forName.getAnnotation(TableAnnotation.class);
+        TableAnnotation tableAnnotation = forName.getAnnotation(TableAnnotation.class);
         //3.获取所有成员属性
-        Field[]  declaredFileds=forName.getDeclaredFields();
-        StringBuffer  sf=new StringBuffer();
+        Field[] declaredFileds = forName.getDeclaredFields();
+        StringBuffer sf = new StringBuffer();
         sf.append("SELECT  ");
-        String tableName=tableAnnotation.value();
+        String tableName = tableAnnotation.value();
         for (int i = 0; i < declaredFileds.length; i++) {
-            Field field=declaredFileds[i];
+            Field field = declaredFileds[i];
             //4 .  属性字段  static final long serialVersionUID  这个数值是获取不到数值的
-            PropertyAnnotation  propertyAnnotation=field.getAnnotation(PropertyAnnotation.class);
-            sf.append(" "+ propertyAnnotation.name()+"  ");
-            if(i==declaredFileds.length -1){
+            PropertyAnnotation propertyAnnotation = field.getAnnotation(PropertyAnnotation.class);
+            sf.append(" " + propertyAnnotation.name() + "  ");
+            if (i == declaredFileds.length - 1) {
                 sf.append("  from");
-            }else{
+            } else {
                 sf.append(" , ");
             }
         }
-        sf.append(" "+ tableName);
-        return         sf.toString();
+        sf.append(" " + tableName);
+        return sf.toString();
     }
 }
 

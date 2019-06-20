@@ -15,10 +15,9 @@ import java.io.File;
 /**
  * 功能说明：批量修改文件名称
  *
- * @date 2019年5月8日
  * @author 马琳-君子自强，脚踏实地积累
+ * @date 2019年5月8日
  * @email 1217575485@qq.com
- *
  */
 public class BatchReName {
 
@@ -42,7 +41,7 @@ public class BatchReName {
                 for (int i = 0; i < fileArray.length; i++) {
                     if (fileArray[i].isDirectory()) {
                         String name = fileArray[i].getName();
-                        System.out.println("获取到文件夹名称：  "+ fileArray[i].getName());
+                        System.out.println("获取到文件夹名称：  " + fileArray[i].getName());
                         if (name.contains(containStr)) {
                             name = name.replace(containStr, "");
                             System.out.println("修改之后文件Name=" + name);

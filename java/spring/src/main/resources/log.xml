@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Logs>
-    <Log  id="1">
-        <userName> 马云</userName>
+    <Log id="1">
+        <userName>马云</userName>
         <content>我的淘宝事业部</content>
         <description>我是一名普通的淘宝部主任</description>
         <creDt>2019-06-17</creDt>
@@ -11,8 +11,8 @@
         <reserve3>备注3</reserve3>
         <reserve4>仅仅名片备注</reserve4>
     </Log>
-    <Log  id="2">
-        <userName> 马化腾</userName>
+    <Log id="2">
+        <userName>马化腾</userName>
         <content>我的腾讯事业部</content>
         <description>我是一名普通的聊天室部主任</description>
         <creDt>2019-06-17</creDt>

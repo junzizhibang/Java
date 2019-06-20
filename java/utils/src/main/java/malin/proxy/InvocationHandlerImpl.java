@@ -10,8 +10,6 @@ package malin.proxy;
  *******************************************/
 
 
-
-
 import malin.service.UserInfoService;
 
 import java.lang.reflect.InvocationHandler;
@@ -23,10 +21,9 @@ import java.lang.reflect.Proxy;
 /**
  * 功能说明：每次生成动态代理类对象时,实现了InvocationHandler接口的调用处理器对象
  *
- * @date 2019年5月15日
  * @author 马琳-君子自强，脚踏实地积累
+ * @date 2019年5月15日
  * @email 1217575485@qq.com
- *
  */
 public class InvocationHandlerImpl implements InvocationHandler {
     private Object target;// 这其实业务实现类对象，用来调用具体的业务方法

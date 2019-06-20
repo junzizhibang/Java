@@ -22,26 +22,28 @@ import java.util.ArrayList;
 
 /**
  * 功能说明：初始版本基础夯实积攒Java架构师的基础内容
- *             在文件中查找一个含有特别的字符串，然后把这一行存到一个文件件
- * @date 2019年5月23日 今年一定要成为Java高级开发攻城狮
- * @author 马琳-君子自强，脚踏实地积累
- * @email 1217575485@qq.com
+ * 在文件中查找一个含有特别的字符串，然后把这一行存到一个文件件
  *
+ * @author 马琳-君子自强，脚踏实地积累
+ * @date 2019年5月23日 今年一定要成为Java高级开发攻城狮
+ * @email 1217575485@qq.com
  */
 public class FindNameinFile {
 
     /**
      * 读取文件工具类  字符流 ，快一些
      */
-    private BufferedReader   reader;
+    private BufferedReader reader;
     /***
      * 写文件工具类
      */
-    private  BufferedWriter  writer;
+    private BufferedWriter writer;
 
-    private  ArrayList<String>  strList=new ArrayList<String>();
+    private ArrayList<String> strList = new ArrayList<String>();
+
     public FindNameinFile() {
     }
+
     /***
      *
      *  查找字符串
@@ -49,76 +51,73 @@ public class FindNameinFile {
      * @param name    文件里面查找字符串
      * @param fileName    文件列表
      */
-    public   void findNameByFile(String name  ,String  fileName) {
+    public void findNameByFile(String name, String fileName) {
         try {
-            File   file=new File(fileName);
-            int  count=0;
-            if(file.isDirectory()) {
-                File []  fileList= file.listFiles();
+            File file = new File(fileName);
+            int count = 0;
+            if (file.isDirectory()) {
+                File[] fileList = file.listFiles();
                 for (int i = 0; i < fileList.length; i++) {
-                    File  txtFile= fileList[i];
-                    if(txtFile.isFile()) {
-                        StringBuffer  strBuffer=new StringBuffer();
+                    File txtFile = fileList[i];
+                    if (txtFile.isFile()) {
+                        StringBuffer strBuffer = new StringBuffer();
                         reader = new BufferedReader(new FileReader(txtFile));
-                        while(reader.readLine()!=null) {
+                        while (reader.readLine() != null) {
                             strBuffer.append(reader.readLine());
-                            if(strBuffer.toString().contains(name)) {
-                                String  saveName =name+count ;
+                            if (strBuffer.toString().contains(name)) {
+                                String saveName = name + count;
                                 count++;
-                                writer=   new BufferedWriter(new FileWriter(new  File(fileName+"/"+saveName+".txt")));
-                                writer.write( strBuffer.toString() );
-                                System.out.println(saveName+"文件处理完成！----》当期处理文件为"+txtFile.getName());
+                                writer = new BufferedWriter(new FileWriter(new File(fileName + "/" + saveName + ".txt")));
+                                writer.write(strBuffer.toString());
+                                System.out.println(saveName + "文件处理完成！----》当期处理文件为" + txtFile.getName());
 
                             }
                             strBuffer.setLength(0);
                         }
                         reader.close();
-                        writer.close();;
+                        writer.close();
+                        ;
 
                     }
                 }
-            }else {
-                StringBuffer  strBuffer=new StringBuffer();
+            } else {
+                StringBuffer strBuffer = new StringBuffer();
                 reader = new BufferedReader(new FileReader(file));
-                String  lineTxt=reader.readLine();
-                while(lineTxt!=null) {
+                String lineTxt = reader.readLine();
+                while (lineTxt != null) {
                     strBuffer.append(lineTxt);
-                    if(strBuffer.toString().contains(name)) {
+                    if (strBuffer.toString().contains(name)) {
                         System.out.println(strBuffer.toString().trim());
 
-                        int  beginIndex =strBuffer.toString().indexOf("tranSerialNo\":\"")+15;
-                        int  beginNameIndex =strBuffer.toString().indexOf("name\":\"")+7;
-                        int  endNameIndex =strBuffer.toString().indexOf("\"}}");
-                        String  indexStr=strBuffer.toString().substring(beginIndex,beginIndex+13);
-                        System.out.println("获取到的tranSerialNo："+indexStr);
+                        int beginIndex = strBuffer.toString().indexOf("tranSerialNo\":\"") + 15;
+                        int beginNameIndex = strBuffer.toString().indexOf("name\":\"") + 7;
+                        int endNameIndex = strBuffer.toString().indexOf("\"}}");
+                        String indexStr = strBuffer.toString().substring(beginIndex, beginIndex + 13);
+                        System.out.println("获取到的tranSerialNo：" + indexStr);
 
                         strList.add(indexStr);
 
-                        String  indexNameStr=strBuffer.toString().substring(beginNameIndex, endNameIndex);
-                        System.out.println("获取到的Name："+indexNameStr);
-                        String  saveName =indexNameStr+indexStr ;
+                        String indexNameStr = strBuffer.toString().substring(beginNameIndex, endNameIndex);
+                        System.out.println("获取到的Name：" + indexNameStr);
+                        String saveName = indexNameStr + indexStr;
 
-                        int  begContentIndex =strBuffer.toString().indexOf("\"facePhoto\":\"")+13;
-                        int  endContentIndex =strBuffer.toString().indexOf("\",\"face_token\":");
-                        String  fromContent=strBuffer.toString().substring(begContentIndex, endContentIndex);
-                        writer=   new BufferedWriter(new FileWriter(new  File( "E:\\马琳\\"+saveName+".txt")));
+                        int begContentIndex = strBuffer.toString().indexOf("\"facePhoto\":\"") + 13;
+                        int endContentIndex = strBuffer.toString().indexOf("\",\"face_token\":");
+                        String fromContent = strBuffer.toString().substring(begContentIndex, endContentIndex);
+                        writer = new BufferedWriter(new FileWriter(new File("E:\\马琳\\" + saveName + ".txt")));
                         writer.write(fromContent);
-                        System.out.println(saveName+"文件处理完成！----》当期处理文件为"+file.getName());
+                        System.out.println(saveName + "文件处理完成！----》当期处理文件为" + file.getName());
                     }
                     strBuffer.setLength(0);
-                    lineTxt=reader.readLine();
+                    lineTxt = reader.readLine();
                 }
                 reader.close();
-                writer.close();;
+                writer.close();
+                ;
             }
-        }catch (Exception e) {
-            System.out.println("  文件读取时出错"+e.getMessage());
+        } catch (Exception e) {
+            System.out.println("  文件读取时出错" + e.getMessage());
         }
-
-
-
-
-
 
 
     }
@@ -139,58 +138,59 @@ public class FindNameinFile {
      * @param fileName    文件名称，这里处理为文件夹，自己去读取文件夹下面的所有日志文件
      * @param content     要找到的字符串可自定义
      */
-    private void readContent(String  fileName  ,String  content) {
+    private void readContent(String fileName, String content) {
         try {
-            File   file=new File(fileName);
-            if(file.isDirectory()) {
-                File []  fileList= file.listFiles();
+            File file = new File(fileName);
+            if (file.isDirectory()) {
+                File[] fileList = file.listFiles();
                 for (int i = 0; i < fileList.length; i++) {
-                    File  txtFile= fileList[i];
-                    if(txtFile.isFile()) {
-                        StringBuffer  strBuffer=new StringBuffer();
+                    File txtFile = fileList[i];
+                    if (txtFile.isFile()) {
+                        StringBuffer strBuffer = new StringBuffer();
                         reader = new BufferedReader(new FileReader(txtFile));
-                        String  lineTxt=reader.readLine();
-                        while(lineTxt!=null) {
+                        String lineTxt = reader.readLine();
+                        while (lineTxt != null) {
                             strBuffer.append(lineTxt);
-                            if(strBuffer.toString().contains(content)) {
+                            if (strBuffer.toString().contains(content)) {
 
-                                int  beginIndex =strBuffer.toString().indexOf("tranSerialNo\":\"")+15;
-                                int  beginNameIndex =strBuffer.toString().indexOf("name\":\"")+7;
-                                int  endNameIndex =strBuffer.toString().indexOf("\"}}");
+                                int beginIndex = strBuffer.toString().indexOf("tranSerialNo\":\"") + 15;
+                                int beginNameIndex = strBuffer.toString().indexOf("name\":\"") + 7;
+                                int endNameIndex = strBuffer.toString().indexOf("\"}}");
 
-                                String  indexStr=strBuffer.toString().substring(beginIndex,beginIndex+13);
-                                System.out.println("获取到的tranSerialNo："+indexStr);
-                                String  indexNameStr=strBuffer.toString().substring(beginNameIndex, endNameIndex);
-                                System.out.println("获取到的Name："+indexNameStr);
-                                String  saveName =indexNameStr+indexStr ;
+                                String indexStr = strBuffer.toString().substring(beginIndex, beginIndex + 13);
+                                System.out.println("获取到的tranSerialNo：" + indexStr);
+                                String indexNameStr = strBuffer.toString().substring(beginNameIndex, endNameIndex);
+                                System.out.println("获取到的Name：" + indexNameStr);
+                                String saveName = indexNameStr + indexStr;
 
-                                int  begContentIndex =strBuffer.toString().indexOf("\"facePhoto\":\"")+13;
-                                int  endContentIndex =strBuffer.toString().indexOf("\",\"face_token\":");
-                                String  fromContent=strBuffer.toString().substring(begContentIndex, endContentIndex);
-                                writer=   new BufferedWriter(new FileWriter(new  File( "E:\\马琳\\"+saveName+".txt")));
+                                int begContentIndex = strBuffer.toString().indexOf("\"facePhoto\":\"") + 13;
+                                int endContentIndex = strBuffer.toString().indexOf("\",\"face_token\":");
+                                String fromContent = strBuffer.toString().substring(begContentIndex, endContentIndex);
+                                writer = new BufferedWriter(new FileWriter(new File("E:\\马琳\\" + saveName + ".txt")));
                                 writer.write(fromContent);
-                                System.out.println(saveName+"文件处理完成！----》当期处理文件为"+txtFile.getName());
+                                System.out.println(saveName + "文件处理完成！----》当期处理文件为" + txtFile.getName());
 
 
                             }
                             strBuffer.setLength(0);
-                            lineTxt=reader.readLine();
+                            lineTxt = reader.readLine();
                         }
 
                     }
                 }
 
                 reader.close();
-                writer.close();;
+                writer.close();
+                ;
             } else {
-                System.out.println(" 输入文件夹路劲即可" );
+                System.out.println(" 输入文件夹路劲即可");
             }
 
-        }catch (Exception e) {
-            System.out.println("  文件读取时出错"+e.getMessage());
+        } catch (Exception e) {
+            System.out.println("  文件读取时出错" + e.getMessage());
             e.printStackTrace();
 
-        }finally {
+        } finally {
 
         }
 
@@ -199,67 +199,66 @@ public class FindNameinFile {
 
 
     /**
-     *
      * 搜集所有的RetCode信息  strList  前面处理的文字串存入然后针对的请求处理
      *
-     * @param fileName   文件
+     * @param fileName 文件
      * @param content
      */
-    private void findAllCode(String  fileName  ,String  content) {
+    private void findAllCode(String fileName, String content) {
         try {
-            File   file=new File(fileName);
-            if(file.isDirectory()) {
-                File []  fileList= file.listFiles();
+            File file = new File(fileName);
+            if (file.isDirectory()) {
+                File[] fileList = file.listFiles();
                 for (int i = 0; i < fileList.length; i++) {
-                    File  txtFile= fileList[i];
-                    if(txtFile.isFile()) {
-                        StringBuffer  strBuffer=new StringBuffer();
+                    File txtFile = fileList[i];
+                    if (txtFile.isFile()) {
+                        StringBuffer strBuffer = new StringBuffer();
                         reader = new BufferedReader(new FileReader(txtFile));
-                        String  lineTxt=reader.readLine();
-                        while(lineTxt!=null) {
+                        String lineTxt = reader.readLine();
+                        while (lineTxt != null) {
                             strBuffer.append(lineTxt);
-                            if(strBuffer.toString().contains(content)) {
+                            if (strBuffer.toString().contains(content)) {
 
-                                int  beginIndex =strBuffer.toString().indexOf("tranSerialNo\":\"")+15;
-                                int  beginNameIndex =strBuffer.toString().indexOf("name\":\"")+7;
-                                int  endNameIndex =strBuffer.toString().indexOf("\"}}");
-                                String  indexStr=strBuffer.toString().substring(beginIndex,beginIndex+13);
-                                System.out.println("获取到的tranSerialNo："+indexStr);
+                                int beginIndex = strBuffer.toString().indexOf("tranSerialNo\":\"") + 15;
+                                int beginNameIndex = strBuffer.toString().indexOf("name\":\"") + 7;
+                                int endNameIndex = strBuffer.toString().indexOf("\"}}");
+                                String indexStr = strBuffer.toString().substring(beginIndex, beginIndex + 13);
+                                System.out.println("获取到的tranSerialNo：" + indexStr);
                                 strList.add(indexStr);
-                                String  indexNameStr=strBuffer.toString().substring(beginNameIndex, endNameIndex);
-                                System.out.println("获取到的Name："+indexNameStr);
-                                String  saveName =indexNameStr+indexStr ;
-                                System.out.println(saveName+"     文件处理完成！----》当期处理文件为"+txtFile.getName());
+                                String indexNameStr = strBuffer.toString().substring(beginNameIndex, endNameIndex);
+                                System.out.println("获取到的Name：" + indexNameStr);
+                                String saveName = indexNameStr + indexStr;
+                                System.out.println(saveName + "     文件处理完成！----》当期处理文件为" + txtFile.getName());
                             }
                             strBuffer.setLength(0);
-                            lineTxt=reader.readLine();
+                            lineTxt = reader.readLine();
                         }
                     }
                 }
 
-                writer=   new BufferedWriter(new FileWriter(new  File( "E:\\马琳\\返回码信息汇总.txt")));
+                writer = new BufferedWriter(new FileWriter(new File("E:\\马琳\\返回码信息汇总.txt")));
 
                 for (int i = 0; i < fileList.length; i++) {
-                    File  txtFile= fileList[i];
-                    if(txtFile.isFile()) {
-                        StringBuffer  codeBuffer=new StringBuffer();
+                    File txtFile = fileList[i];
+                    if (txtFile.isFile()) {
+                        StringBuffer codeBuffer = new StringBuffer();
                         reader = new BufferedReader(new FileReader(txtFile));
-                        String  lineTxt=reader.readLine();
-                        while(lineTxt!=null) {
+                        String lineTxt = reader.readLine();
+                        while (lineTxt != null) {
                             codeBuffer.append(lineTxt);
-                            for(int  k=0;k<strList.size();k++) {
+                            for (int k = 0; k < strList.size(); k++) {
                                 //"tranSerialNo":"1558244787094","retCode":"
-                                if(codeBuffer.toString().contains("\"tranSerialNo\":\""+strList.get(k)+"\",\"retCode\":\"")) {
+                                if (codeBuffer.toString().contains("\"tranSerialNo\":\"" + strList.get(k) + "\",\"retCode\":\"")) {
 
-                                    int  begIndex =codeBuffer.toString().indexOf("\"tranSerialNo\"");
-                                    int  endIndex =codeBuffer.toString().indexOf("\"resbody\"");
-                                    String  indexStr=codeBuffer.toString().substring(begIndex,endIndex);
-                                    System.out.println("获取到的返回码完整信息："+indexStr);
-                                    writer.write("获取到的返回码完整信息："+indexStr+"\n");
+                                    int begIndex = codeBuffer.toString().indexOf("\"tranSerialNo\"");
+                                    int endIndex = codeBuffer.toString().indexOf("\"resbody\"");
+                                    String indexStr = codeBuffer.toString().substring(begIndex, endIndex);
+                                    System.out.println("获取到的返回码完整信息：" + indexStr);
+                                    writer.write("获取到的返回码完整信息：" + indexStr + "\n");
                                 }
                             }
                             codeBuffer.setLength(0);
-                            lineTxt=reader.readLine();
+                            lineTxt = reader.readLine();
 
                         }
                     }
@@ -268,13 +267,14 @@ public class FindNameinFile {
                 System.out.println("-----返回码汇总文件处理完成！----");
 
                 reader.close();
-                writer.close();;
+                writer.close();
+                ;
             } else {
-                System.out.println(" 输入文件夹路劲即可" );
+                System.out.println(" 输入文件夹路劲即可");
             }
 
-        }catch (Exception e) {
-            System.out.println("  文件读取时出错"+e.getMessage());
+        } catch (Exception e) {
+            System.out.println("  文件读取时出错" + e.getMessage());
             e.printStackTrace();
 
         }
@@ -283,25 +283,23 @@ public class FindNameinFile {
 
 
     /**
-     *@功能描述   输入文件名路径输入文件名下面的文件名称
-     *@作者      马琳-脚踏实地积累。Java进阶
-     *@email    1217575485@qq.com
-     *
-     *printFileName(E:\root\codes\study-imooc-master)
-     *
+     * @功能描述 输入文件名路径输入文件名下面的文件名称
+     * @作者 马琳-脚踏实地积累。Java进阶
+     * @email 1217575485@qq.com
+     * <p>
+     * printFileName(E:\root\codes\study-imooc-master)
      */
-    private static  void printFileName(String  fileName) {
-        File  file=new  File(fileName);
-        if(file.isDirectory()) {
-            File[]  files=file.listFiles();
+    private static void printFileName(String fileName) {
+        File file = new File(fileName);
+        if (file.isDirectory()) {
+            File[] files = file.listFiles();
             for (int i = 0; i < files.length; i++) {
-                System.out.println("<modules>"+files[i].getName()+"</modules>");
+                System.out.println("<modules>" + files[i].getName() + "</modules>");
 
             }
 
 
         }
-
 
 
     }

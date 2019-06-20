@@ -13,35 +13,38 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * thread  功能说明：   Volatile 修饰变量 实现局部变量实时刷新  Volatile不具备原子性!AtomicInteger  使用incrementAndGet 保证原子性
- * 			初始版本基础夯实积攒Java架构师的基础内容
- * @date   2019/6/15 13:31  今年一定要成为Java高级开发攻城狮
+ * 初始版本基础夯实积攒Java架构师的基础内容
+ *
  * @author 马琳-君子自强，脚踏实地积累  VolatileNoAtomic.java
+ * @date 2019/6/15 13:31  今年一定要成为Java高级开发攻城狮
  * @email 1217575485@qq.com
  */
-public class VolatileNoAtomic   {
+public class VolatileNoAtomic {
     public static void main(String[] args) {
-        VolatileNoAutomicThread[]  volatileNoAtomics=new  VolatileNoAutomicThread[10];
-        for (int i = 0; i <volatileNoAtomics.length ; i++) {
-            volatileNoAtomics[i]=new VolatileNoAutomicThread();
+        VolatileNoAutomicThread[] volatileNoAtomics = new VolatileNoAutomicThread[10];
+        for (int i = 0; i < volatileNoAtomics.length; i++) {
+            volatileNoAtomics[i] = new VolatileNoAutomicThread();
         }
-        for (int i = 0; i <volatileNoAtomics.length ; i++) {
+        for (int i = 0; i < volatileNoAtomics.length; i++) {
             volatileNoAtomics[i].start();
         }
 
     }
 }
-class   VolatileNoAutomicThread  extends Thread{
 
-    private  static  volatile  int count=0;
-   private static AtomicInteger  atomicInteger=new AtomicInteger(0);
+class VolatileNoAutomicThread extends Thread {
+
+    private static volatile int count = 0;
+    private static AtomicInteger atomicInteger = new AtomicInteger(0);
+
     @Override
     public void run() {
-        for (int i = 0; i <1000 ; i++) {
-                    count++;
+        for (int i = 0; i < 1000; i++) {
+            count++;
             atomicInteger.incrementAndGet();
         }
-           System.out.println(getName()+"--count----"+count);
-              System.out.println(getName()+"----atomicInteger--"+atomicInteger);
+        System.out.println(getName() + "--count----" + count);
+        System.out.println(getName() + "----atomicInteger--" + atomicInteger);
     }
 }
 

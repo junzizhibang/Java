@@ -10,7 +10,6 @@ package malin.jvm;
  *******************************************/
 
 
-
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -19,10 +18,9 @@ import java.lang.reflect.Method;
 /**
  * 功能说明： 热 更新代码
  *
- * @date 2019年5月15日
  * @author 马琳-君子自强，脚踏实地积累
+ * @date 2019年5月15日
  * @email 1217575485@qq.com
- *
  */
 public class HotCompile {
     public static void main(String[] args)

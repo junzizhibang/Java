@@ -10,37 +10,37 @@ import jdk.nashorn.internal.runtime.ECMAException;
  * v1.0.0.0 2019/6/15-01  [thread]  1217575485@qq.com        
  * 初始版本基础夯实积攒Java架构师的基础内容  Ideal
  *******************************************/
-  class TrainThread   implements   Runnable{
+class TrainThread implements Runnable {
 
-    static  int trainCount=100;
-    private  Object oj=new Object();
-    public  boolean  flag=true;
+    static int trainCount = 100;
+    private Object oj = new Object();
+    public boolean flag = true;
 
 
     @Override
     public void run() {
-        if(flag){  // 如果 falsg为true,先拿到object  ,这把锁才能进入show方法,进入show方法后需要this锁
-            while(trainCount>0){
-                synchronized (oj){
+        if (flag) {  // 如果 falsg为true,先拿到object  ,这把锁才能进入show方法,进入show方法后需要this锁
+            while (trainCount > 0) {
+                synchronized (oj) {
                     show();
                 }
             }
-        }else{   //  如果flag 为false,先拿到this 这把锁.才能进入show方法,进入show方法,然后拿到object锁
-            while(trainCount>0){
+        } else {   //  如果flag 为false,先拿到this 这把锁.才能进入show方法,进入show方法,然后拿到object锁
+            while (trainCount > 0) {
                 show();
             }
         }
     }
 
-    private  synchronized    void show() {
-        synchronized (oj){
-            if(trainCount>0){
-                try{
+    private synchronized void show() {
+        synchronized (oj) {
+            if (trainCount > 0) {
+                try {
                     Thread.sleep(40);
-                }catch (Exception  ex){
+                } catch (Exception ex) {
                     ex.printStackTrace();
                 }
-                System.out.println(Thread.currentThread().getName()+"出售第"+(100-trainCount+1)+"张票");
+                System.out.println(Thread.currentThread().getName() + "出售第" + (100 - trainCount + 1) + "张票");
                 trainCount--;
             }
         }
@@ -48,19 +48,19 @@ import jdk.nashorn.internal.runtime.ECMAException;
 }
 
 
-public   class  ThreadTrain {
+public class ThreadTrain {
     /***
      * 验证死锁现象: 死锁产生的原因,这个示例验证的是同步中嵌套着同步
      * @param args
      * @throws InterruptedException
      */
     public static void main(String[] args) throws InterruptedException {
-        TrainThread  train=new TrainThread();
-        Thread  thread1=new Thread(train,"一号窗口");
-        Thread  thread2=new Thread(train,"二号窗口");
+        TrainThread train = new TrainThread();
+        Thread thread1 = new Thread(train, "一号窗口");
+        Thread thread2 = new Thread(train, "二号窗口");
         thread1.start();
         Thread.sleep(100);
-        train.flag=false;
+        train.flag = false;
         thread2.start();
 
     }

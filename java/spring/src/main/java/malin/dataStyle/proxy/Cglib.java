@@ -10,8 +10,6 @@ package malin.dataStyle.proxy;
  *******************************************/
 
 
-
-
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
@@ -20,20 +18,21 @@ import java.lang.reflect.Method;
 
 /**
  * malin.dataStyle.proxy  功能说明：  CGLIB 代理
- * 			初始版本基础夯实积攒Java架构师的基础内容
- * @date   2019/6/17 19:47  今年一定要成为Java高级开发攻城狮
+ * 初始版本基础夯实积攒Java架构师的基础内容
+ *
  * @author 马琳-君子自强，脚踏实地积累  Cglib.java
+ * @date 2019/6/17 19:47  今年一定要成为Java高级开发攻城狮
  * @email 1217575485@qq.com
  */
-public class Cglib  implements MethodInterceptor {
+public class Cglib implements MethodInterceptor {
 
 
     public static void main(String[] args) {
-        Cglib  cglib =new Cglib();
-        Enhancer enhancer =new Enhancer();
-        enhancer.setSuperclass(WulingCar.class            );
+        Cglib cglib = new Cglib();
+        Enhancer enhancer = new Enhancer();
+        enhancer.setSuperclass(WulingCar.class);
         enhancer.setCallback(cglib);
-        Car car= (Car) enhancer.create();
+        Car car = (Car) enhancer.create();
         car.buyCar();
     }
 
@@ -41,9 +40,9 @@ public class Cglib  implements MethodInterceptor {
     public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
 
         System.out.println(" 我是买房中介,   开始监听你买房了 ...  ...  ");
-        Object  invokeSuper=proxy.invokeSuper(obj,args);
+        Object invokeSuper = proxy.invokeSuper(obj, args);
         System.out.println("  我是买房中介,   开始结束你买房了.....   ...  ");
-        return  invokeSuper;
+        return invokeSuper;
 
     }
 }

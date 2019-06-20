@@ -15,8 +15,8 @@ public class SpringMain {
 
 
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext  classPathXmlApplicationContext=new ClassPathXmlApplicationContext("application.xml");
-        UserInfo  userInfo= (UserInfo) classPathXmlApplicationContext.getBean("user1");
+        ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("application.xml");
+        UserInfo userInfo = (UserInfo) classPathXmlApplicationContext.getBean("user1");
         System.out.println(userInfo.toString());
     }
 }

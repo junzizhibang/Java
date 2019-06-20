@@ -21,17 +21,19 @@ import java.util.List;
 
 /**
  * malin.dataStyle.dataForm  功能说明：    模仿Spring的bean的加载方式
- * 			初始版本基础夯实积攒Java架构师的基础内容
- * @date   2019/6/15 14:46  今年一定要成为Java高级开发攻城狮
+ * 初始版本基础夯实积攒Java架构师的基础内容
+ *
  * @author 马琳-君子自强，脚踏实地积累  ImatateClassPathXmlApplicationContext.java
+ * @date 2019/6/15 14:46  今年一定要成为Java高级开发攻城狮
  * @email 1217575485@qq.com
  */
 public class ImatateClassPathXmlApplicationContext {
-    private  String xmlPath;
+    private String xmlPath;
+
     public static void main(String[] args) throws ClassNotFoundException, NoSuchFieldException, InstantiationException, DocumentException, IllegalAccessException {
-        ImatateClassPathXmlApplicationContext  applicationContext=new ImatateClassPathXmlApplicationContext("application.xml");
-        Object  bean=applicationContext.getBean("user2");
-        UserInfo  user= (UserInfo) bean;
+        ImatateClassPathXmlApplicationContext applicationContext = new ImatateClassPathXmlApplicationContext("application.xml");
+        Object bean = applicationContext.getBean("user2");
+        UserInfo user = (UserInfo) bean;
         System.out.println(user.toString());
     }
 
@@ -45,43 +47,42 @@ public class ImatateClassPathXmlApplicationContext {
      * @return
      * @throws DocumentException
      */
-    public   Object getBean(String beanId) throws DocumentException, ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchFieldException {
-        SAXReader  saxReader=new SAXReader();
+    public Object getBean(String beanId) throws DocumentException, ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchFieldException {
+        SAXReader saxReader = new SAXReader();
         //获取当前配置的项目路径中的xml配置路径
-        Document  read=saxReader.read(this.getClass().getClassLoader().getResource(xmlPath));
+        Document read = saxReader.read(this.getClass().getClassLoader().getResource(xmlPath));
         //获取节点对象
-        Element  rootElement=read.getRootElement();
-        List<Element>  elements=rootElement.elements();
-        Object  object=null;
+        Element rootElement = read.getRootElement();
+        List<Element> elements = rootElement.elements();
+        Object object = null;
         for (Element sonElement :
                 elements) {
             //2.获取到每个bean配置,获取class地址
-            String  sonBeanId=sonElement.attributeValue("id");
-            if(!beanId.equals(sonBeanId)){
+            String sonBeanId = sonElement.attributeValue("id");
+            if (!beanId.equals(sonBeanId)) {
                 continue;
             }
-            String beanClassPath=sonElement.attributeValue("class");
+            String beanClassPath = sonElement.attributeValue("class");
             //3.拿到Class地址  进行反射实例化对象,使用反射api为  私有属性赋值
-            Class<?> forName=Class.forName(beanClassPath);
-            object= forName.newInstance();
+            Class<?> forName = Class.forName(beanClassPath);
+            object = forName.newInstance();
             //全部成员属性
-            List<Element> sonSoneleme=sonElement.elements();
+            List<Element> sonSoneleme = sonElement.elements();
             for (Element element :
                     sonSoneleme) {
                 String name = element.attributeValue("name");
-                String  value=element.attributeValue("value");
+                String value = element.attributeValue("value");
                 //使用反射API为私有属性赋值
-                Field declaredField=forName.getDeclaredField(name);
+                Field declaredField = forName.getDeclaredField(name);
                 //为私有成员变量赋值
                 declaredField.setAccessible(true);
-                declaredField.set(object,value);
+                declaredField.set(object, value);
             }
         }
         //拿到class地址,进行反射实例化对象,使用反射API为私有属性赋值
-        return  object;
+        return object;
 
     }
-
 
 
 }

@@ -24,47 +24,48 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 /**
- *  功能说明：
- * 			初始版本基础夯实积攒Java架构师的基础内容
- * @date 2019年6月11日 今年一定要成为Java高级开发攻城狮
- * @author 马琳-君子自强，脚踏实地积累
- * @email 1217575485@qq.com
+ * 功能说明：
+ * 初始版本基础夯实积攒Java架构师的基础内容
  *
+ * @author 马琳-君子自强，脚踏实地积累
+ * @date 2019年6月11日 今年一定要成为Java高级开发攻城狮
+ * @email 1217575485@qq.com
  */
 public class JdbcTemplateUtil {
 
 
-    private  static  DriverManagerDataSource  ds;
+    private static DriverManagerDataSource ds;
+
     public static void main(String[] args) {
-        connect("",",","");
+        connect("", ",", "");
         initJdbcTemplate();
     }
 
 
     /**
-     *@功能描述     使用Spring的JDBCTemplate操作数据库
-     *@作者      马琳-脚踏实地积累。Java进阶
-     *@email    1217575485@qq.com
+     * @功能描述 使用Spring的JDBCTemplate操作数据库
+     * @作者 马琳-脚踏实地积累。Java进阶
+     * @email 1217575485@qq.com
      */
-    private static void connect(String  userName,String password,String type) {
-        if(type.equals("mysql")) {
+    private static void connect(String userName, String password, String type) {
+        if (type.equals("mysql")) {
             ds.setDriverClassName("com.mysql.jdbc.driver");
             ds.setUrl("jdbc:mysql://localhost:3306/test");
             ds.setUsername(userName);
             ds.setPassword(password);
-        }else {
-            ds=null;
+        } else {
+            ds = null;
         }
     }
 
 
     /**
-     *@功能描述   初始化JDBC操作工具类
-     *@作者      马琳-脚踏实地积累。Java进阶
-     *@email    1217575485@qq.com
+     * @功能描述 初始化JDBC操作工具类
+     * @作者 马琳-脚踏实地积累。Java进阶
+     * @email 1217575485@qq.com
      */
-    private  static  void initJdbcTemplate() {
-        JdbcTemplate  jdbc =new  JdbcTemplate();
+    private static void initJdbcTemplate() {
+        JdbcTemplate jdbc = new JdbcTemplate();
         jdbc.setDataSource(ds);
         jdbc.execute("");
 

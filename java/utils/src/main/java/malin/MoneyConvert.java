@@ -12,15 +12,14 @@ package malin;
 /**
  * 功能说明：主要实现金额与汉字大小写的转换 金额转换，阿拉伯数字的金额转换成中国传统的形式如：（￥1011）－>（一 千零一拾一元整）输出。 去零的代码：
  *
- * @date 2019年5月8日
  * @author 马琳-君子自强，脚踏实地积累
+ * @date 2019年5月8日
  * @email 1217575485@qq.com
- *
  */
 public class MoneyConvert {
 
-    private static final char[] data = new char[] { '零', '壹', '贰', '叁', '肆','伍', '陆', '柒', '捌', '玖' };
-    private static final char[] units = new char[] { '元', '拾', '佰', '仟', '万','拾', '佰', '仟', '亿' };
+    private static final char[] data = new char[]{'零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'};
+    private static final char[] units = new char[]{'元', '拾', '佰', '仟', '万', '拾', '佰', '仟', '亿'};
 
     public static void main(String[] args) {
         System.out.println(convert(135689123));

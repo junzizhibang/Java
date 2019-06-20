@@ -1,13 +1,20 @@
 package malin.batchSms;
 
-/******************************************** 
+/**
  * 模块名称: 工作三年经验，目标是成为JAVA高级开发攻城狮/Java 架构师我在努力！我能行！
  * 功能说明: 俩年迷惘期，回首时才发现自己想要的目标和清晰的职业规划
- * 开发人员: 马琳-君子自强，脚踏实地积累 
- * 开发时间:2019/6/13 19:22  今年一定要成为Java高级开发攻城狮 
- * v1.0.0.0 2019/6/13-01  [malin.batchSms]  1217575485@qq.com        
+ * 开发人员: 马琳-君子自强，脚踏实地积累
+ * 开发时间:2019/6/13 19:22  今年一定要成为Java高级开发攻城狮
+ * v1.0.0.0 2019/6/13-01  [malin.batchSms]  1217575485@qq.com
  * 初始版本基础夯实积攒Java架构师的基础内容  Ideal
- *******************************************/
+ * <p>
+ * 功能说明：   批次发送短信   使用多线程
+ * 初始版本基础夯实积攒Java架构师的基础内容
+ *
+ * @date 2019年5月24日 今年一定要成为Java高级开发攻城狮
+ * @author 马琳-君子自强，脚踏实地积累
+ * @email 1217575485@qq.com
+ */
 
 /**
  * 功能说明：   批次发送短信   使用多线程
@@ -49,7 +56,7 @@ public class BatchSendSmsThread extends Thread {
         List<UserInfo> list = new ArrayList<UserInfo>();
         for (int i = 1; i <= 140; i++) {
             UserInfo userEntity = new UserInfo();
-            userEntity.setId( i);
+            userEntity.setId(i);
             userEntity.setUserName("userName" + i);
             userEntity.setContent("模拟新建" + i + "条短信！");
             list.add(userEntity);
@@ -90,7 +97,7 @@ class ListUtils {
      *
      * @returnType:@param list 切割集合
      * @returnType:@param pageSize 分页长度
-     * @returnType:@return List<List<T>> 返回分页数据
+     * @returnType:@return List<List < T>> 返回分页数据
      */
     static public <T> List<List<T>> splitList(List<T> list, int pageSize) {
         int listSize = list.size();

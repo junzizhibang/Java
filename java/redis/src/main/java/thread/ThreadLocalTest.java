@@ -11,60 +11,65 @@ package thread;
 public class ThreadLocalTest {
     public static void main(String[] args) {
 
-        ResSign  res=new  ResSign();
-        ThreadLocalDemo demo1=new ThreadLocalDemo(res);
-        ThreadLocalDemo demo2=new ThreadLocalDemo(res);
-        ThreadLocalDemo demo3=new ThreadLocalDemo(res);
+        ResSign res = new ResSign();
+        ThreadLocalDemo demo1 = new ThreadLocalDemo(res);
+        ThreadLocalDemo demo2 = new ThreadLocalDemo(res);
+        ThreadLocalDemo demo3 = new ThreadLocalDemo(res);
         demo1.start();
         demo2.start();
         demo3.start();
     }
 }
+
 /**
  * thread  功能说明：   作为一个类的信号量
- * 			初始版本基础夯实积攒Java架构师的基础内容
- * @date   2019/6/15 12:14  今年一定要成为Java高级开发攻城狮
+ * 初始版本基础夯实积攒Java架构师的基础内容
+ *
  * @author 马琳-君子自强，脚踏实地积累  ThreadLocalTest.java
+ * @date 2019/6/15 12:14  今年一定要成为Java高级开发攻城狮
  * @email 1217575485@qq.com
  */
-class  ResSign{
+class ResSign {
     /**
      * 设置本地局部变量,和其他线程局部变量隔离开,互不影响;
-     *       设置当前线程局部变量,初始化值
+     * 设置当前线程局部变量,初始化值
      */
-    private  ThreadLocal<Integer>  count=new ThreadLocal<Integer>(){
-        protected  Integer initialValue(){
-            return   0;
-        };
+    private ThreadLocal<Integer> count = new ThreadLocal<Integer>() {
+        protected Integer initialValue() {
+            return 0;
+        }
+
+        ;
     };
 
     /***
      * 模拟生成订单号
      * @return
      */
-    public  Integer  getNum(){
-        int count=this.count.get()+1;
+    public Integer getNum() {
+        int count = this.count.get() + 1;
         this.count.set(count);
-        return  count;
+        return count;
     }
 
 }
 
-class  ThreadLocalDemo  extends  Thread{
-    private  ResSign  res;
-    public  ThreadLocalDemo(ResSign  res){
-        this.res=res;
+class ThreadLocalDemo extends Thread {
+    private ResSign res;
+
+    public ThreadLocalDemo(ResSign res) {
+        this.res = res;
     }
 
     @Override
     public void run() {
-        for (int i = 0; i < 10 ; i++) {
-            try{
+        for (int i = 0; i < 10; i++) {
+            try {
                 Thread.sleep(10);
-            }catch (Exception ex){
+            } catch (Exception ex) {
                 ex.printStackTrace();
             }
-            System.out.println(getName()+"  "+i+";Number: " +  res.getNum());
+            System.out.println(getName() + "  " + i + ";Number: " + res.getNum());
         }
     }
 }

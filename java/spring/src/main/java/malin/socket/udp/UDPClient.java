@@ -14,18 +14,19 @@ import java.net.*;
 
 /**
  * malin.socket.udp  功能说明：        模拟UDP的客户端进行连接
- * 			初始版本基础夯实积攒Java架构师的基础内容
- * @date   2019/6/17 21:27  今年一定要成为Java高级开发攻城狮
+ * 初始版本基础夯实积攒Java架构师的基础内容
+ *
  * @author 马琳-君子自强，脚踏实地积累  UDPClient.java
+ * @date 2019/6/17 21:27  今年一定要成为Java高级开发攻城狮
  * @email 1217575485@qq.com
  */
 public class UDPClient {
     public static void main(String[] args) throws IOException {
         System.out.println("UDP 客户端进行开始发送数据........");
-        DatagramSocket  datagramSocket=new DatagramSocket();
-        String message=" UDP发送数据开始进行测试........";
-        byte[] bytes=message.getBytes();
-        DatagramPacket  datagramPacket=new DatagramPacket( bytes,message.length(),InetAddress.getByName("127.0.0.1"),8080);
+        DatagramSocket datagramSocket = new DatagramSocket();
+        String message = " UDP发送数据开始进行测试........";
+        byte[] bytes = message.getBytes();
+        DatagramPacket datagramPacket = new DatagramPacket(bytes, message.length(), InetAddress.getByName("127.0.0.1"), 8080);
         datagramSocket.send(datagramPacket);
         datagramSocket.close();
     }

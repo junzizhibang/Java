@@ -22,16 +22,12 @@ import javassist.CtMethod;
 import javassist.NotFoundException;
 
 
-
-
-
 /**
  * 功能说明： JAVA反射基础
  *
- * @date 2019年5月14日
  * @author 马琳-君子自强，脚踏实地积累
+ * @date 2019年5月14日
  * @email 1217575485@qq.com
- *
  */
 public class JAVAJDKreflect {
 
@@ -43,7 +39,7 @@ public class JAVAJDKreflect {
      * @throws NotFoundException
      * @throws IOException
      */
-    public  static  void  ByJavassist()throws CannotCompileException, NotFoundException, IOException{
+    public static void ByJavassist() throws CannotCompileException, NotFoundException, IOException {
         ClassPool pool = ClassPool.getDefault();
         // 1.创建user类
         CtClass userClass = pool.makeClass("com.study.days.jvm.User");
@@ -68,6 +64,7 @@ public class JAVAJDKreflect {
         userClass.writeFile("D:/IT/files");
 
     }
+
     /****
      *
      * 使用反射技术执行某方法
@@ -80,20 +77,21 @@ public class JAVAJDKreflect {
      * @throws IllegalArgumentException
      * @throws InvocationTargetException
      */
-    public   static   void  ByJAVAreflect() throws ClassNotFoundException, NoSuchMethodException,
-            SecurityException,InstantiationException,IllegalAccessException, IllegalArgumentException,
+    public static void ByJAVAreflect() throws ClassNotFoundException, NoSuchMethodException,
+            SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException,
             InvocationTargetException {
         Class<?> forName = Class.forName("com.study.days.jvm.JAVAJDKreflect");
         Object newInstance = forName.newInstance();
         Method method = forName.getDeclaredMethod("sum", int.class, int.class);
         method.invoke(newInstance, 1, 5);
     }
+
     /***
      *
      * 动态修改字节码文件
      *
      */
-    public static void DynasticByJavassist( ) {
+    public static void DynasticByJavassist() {
         try {
             ClassPool pool = ClassPool.getDefault();
             // 读取com.itmayiedu.User
@@ -125,6 +123,6 @@ public class JAVAJDKreflect {
         //使用反射技术执行某方法
         ByJAVAreflect();
         //动态修改字节码文件
-        DynasticByJavassist( );
+        DynasticByJavassist();
     }
 }

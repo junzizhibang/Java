@@ -28,15 +28,15 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public  class  UserInfoDao{
+public class UserInfoDao {
 
     @Autowired
-    private  JdbcTemplate  jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
 
-    public  void  addUserInfo(UserInfo userinfo) {
-        String  sql="Insert into  userinfo(userName,id,content)  values(?,?,?);";
-        jdbcTemplate.update(sql,userinfo.getContent());
+    public void addUserInfo(UserInfo userinfo) {
+        String sql = "Insert into  userinfo(userName,id,content)  values(?,?,?);";
+        jdbcTemplate.update(sql, userinfo.getContent());
         System.out.println("用户信息新增成功！！");
     }
 

@@ -28,21 +28,17 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 
-
-
 @Service
-public  class  LogService{
+public class LogService {
 
     @Autowired
     private LogDao logDao;
 
     @Transactional(propagation = Propagation.NEVER)
-    public  void  addLog() {
+    public void addLog() {
         logDao.addLog();
         System.out.println("  Service  调用DAO插入日志处理成功");
     }
-
-
 
 
 }

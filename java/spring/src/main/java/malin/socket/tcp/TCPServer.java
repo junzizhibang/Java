@@ -17,14 +17,14 @@ public class TCPServer {
 
     public static void main(String[] args) throws IOException {
         System.out.println("TCP ..Socket 服务器开始启动....");
-        ServerSocket  serverSocket=new ServerSocket(8080);
-        Socket  socket=serverSocket.accept();
-        InputStream inputStream=socket.getInputStream();
+        ServerSocket serverSocket = new ServerSocket(8080);
+        Socket socket = serverSocket.accept();
+        InputStream inputStream = socket.getInputStream();
 
-        byte[] bytes=new byte[256];
-        int  length=inputStream.read(bytes);
-        String str=new String(bytes,0,length);
-        System.out.println("获取到的字符串为:"+str);
+        byte[] bytes = new byte[256];
+        int length = inputStream.read(bytes);
+        String str = new String(bytes, 0, length);
+        System.out.println("获取到的字符串为:" + str);
         serverSocket.close();
     }
 }

@@ -12,10 +12,9 @@ package malin.proxy;
 /**
  * 功能说明：静态代理设计模式
  *
- * @date 2019年5月14日
  * @author 马琳-君子自强，脚踏实地积累
+ * @date 2019年5月14日
  * @email 1217575485@qq.com
- *
  */
 public class UserServiceProxy {
 //    private UserService userService;

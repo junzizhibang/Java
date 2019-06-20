@@ -12,19 +12,21 @@ import java.net.Socket;
  * v1.0.0.0 2019/6/17-01  [malin.socket.tcp]  1217575485@qq.com        
  * 初始版本基础夯实积攒Java架构师的基础内容  Ideal
  *******************************************/
+
 /**
  * malin.socket.tcp  功能说明：       TCP三次握手,四次挥手之后,保证可靠性连接,客户端发送确保对方接收到然后断开连接
- * 			初始版本基础夯实积攒Java架构师的基础内容
- * @date   2019/6/17 21:25  今年一定要成为Java高级开发攻城狮
+ * 初始版本基础夯实积攒Java架构师的基础内容
+ *
  * @author 马琳-君子自强，脚踏实地积累  TCPClient.java
+ * @date 2019/6/17 21:25  今年一定要成为Java高级开发攻城狮
  * @email 1217575485@qq.com
  */
 public class TCPClient {
 
     public static void main(String[] args) throws IOException {
         System.out.println("TCP  .  Socket启动 ...");
-        Socket socket=new Socket("127.0.0.1",8080);
-        OutputStream  outputStream=socket.getOutputStream();
+        Socket socket = new Socket("127.0.0.1", 8080);
+        OutputStream outputStream = socket.getOutputStream();
         outputStream.write("我是客户端:".getBytes());
         socket.close();
     }

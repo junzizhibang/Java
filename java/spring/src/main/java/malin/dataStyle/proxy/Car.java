@@ -8,15 +8,17 @@ package malin.dataStyle.proxy;
  * v1.0.0.0 2019/6/17-01  [malin.dataStyle.proxy]  1217575485@qq.com        
  * 初始版本基础夯实积攒Java架构师的基础内容  Ideal
  *******************************************/
+
 /**
  * malin.dataStyle.proxy  功能说明：  接口模板
- * 			初始版本基础夯实积攒Java架构师的基础内容
- * @date   2019/6/17 20:19  今年一定要成为Java高级开发攻城狮
+ * 初始版本基础夯实积攒Java架构师的基础内容
+ *
  * @author 马琳-君子自强，脚踏实地积累  Car.java
+ * @date 2019/6/17 20:19  今年一定要成为Java高级开发攻城狮
  * @email 1217575485@qq.com
  */
 public interface Car {
 
-    public void   buyCar();
+    public void buyCar();
 
 }

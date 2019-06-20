@@ -8,26 +8,30 @@ package malin.dataStyle.proxy;
  * v1.0.0.0 2019/6/17-01  [malin.dataStyle.proxy]  1217575485@qq.com        
  * 初始版本基础夯实积攒Java架构师的基础内容  Ideal
  *******************************************/
+
 /**
  * malin.dataStyle.proxy  功能说明：     静态代理实现,查询代理模式
- * 			初始版本基础夯实积攒Java架构师的基础内容
- * @date   2019/6/17 20:45  今年一定要成为Java高级开发攻城狮
+ * 初始版本基础夯实积攒Java架构师的基础内容
+ *
  * @author 马琳-君子自强，脚踏实地积累  WulingCar.java
+ * @date 2019/6/17 20:45  今年一定要成为Java高级开发攻城狮
  * @email 1217575485@qq.com
  */
-public class WulingCar   implements   Car{
+public class WulingCar implements Car {
     @Override
     public void buyCar() {
         System.out.println("  你好哦,我现在要准备买车了!... ");
     }
 }
 
-class Proxy implements  Car{
+class Proxy implements Car {
 
-    private  WulingCar  car;
-   public Proxy(WulingCar  car){
-       this.car=car;
-   }
+    private WulingCar car;
+
+    public Proxy(WulingCar car) {
+        this.car = car;
+    }
+
     @Override
     public void buyCar() {
         System.out.println("我是4S  服务员,买车前给你介绍下哦!  ");
@@ -36,7 +40,7 @@ class Proxy implements  Car{
     }
 
     public static void main(String[] args) {
-        Car  proxy=new Proxy(new WulingCar());
+        Car proxy = new Proxy(new WulingCar());
         proxy.buyCar();
     }
 }

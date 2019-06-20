@@ -15,70 +15,71 @@ import com.alibaba.fastjson.JSONObject;
 
 /**
  * malin.dataStyle.json  功能说明：    FastJSON 解析格式
- * 			初始版本基础夯实积攒Java架构师的基础内容
- * @date   2019/6/15 16:02  今年一定要成为Java高级开发攻城狮
+ * 初始版本基础夯实积攒Java架构师的基础内容
+ *
  * @author 马琳-君子自强，脚踏实地积累  FastJsonDemo.java
+ * @date 2019/6/15 16:02  今年一定要成为Java高级开发攻城狮
  * @email 1217575485@qq.com
  */
 public class FastJsonDemo {
 
-static  String  JSONSTR="{\n" +
-        "    \"name\": \"马云\",\n" +
-        "    \"url\": \"http://www.bejson.com\",\n" +
-        "    \"page\": 88,\n" +
-        "    \"isNonProfit\": true,\n" +
-        "    \"address\": {\n" +
-        "        \"street\": \"科技园路.\",\n" +
-        "        \"city\": \"江苏苏州\",\n" +
-        "        \"country\": \"中国\"\n" +
-        "    },\n" +
-        "    \"links\": [\n" +
-        "        {\n" +
-        "            \"name\": \"Google\",\n" +
-        "            \"url\": \"http://www.google.com\"\n" +
-        "        },\n" +
-        "        {\n" +
-        "            \"name\": \"Baidu\",\n" +
-        "            \"url\": \"http://www.baidu.com\"\n" +
-        "        },\n" +
-        "        {\n" +
-        "            \"name\": \"SoSo\",\n" +
-        "            \"url\": \"http://www.SoSo.com\"\n" +
-        "        }\n" +
-        "    ]\n" +
-        "} ";
+    static String JSONSTR = "{\n" +
+            "    \"name\": \"马云\",\n" +
+            "    \"url\": \"http://www.bejson.com\",\n" +
+            "    \"page\": 88,\n" +
+            "    \"isNonProfit\": true,\n" +
+            "    \"address\": {\n" +
+            "        \"street\": \"科技园路.\",\n" +
+            "        \"city\": \"江苏苏州\",\n" +
+            "        \"country\": \"中国\"\n" +
+            "    },\n" +
+            "    \"links\": [\n" +
+            "        {\n" +
+            "            \"name\": \"Google\",\n" +
+            "            \"url\": \"http://www.google.com\"\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"name\": \"Baidu\",\n" +
+            "            \"url\": \"http://www.baidu.com\"\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"name\": \"SoSo\",\n" +
+            "            \"url\": \"http://www.SoSo.com\"\n" +
+            "        }\n" +
+            "    ]\n" +
+            "} ";
 
 
     public static void main(String[] args) {
         //
-        JSONObject jsonObject=new JSONObject();
+        JSONObject jsonObject = new JSONObject();
         //
-        JSONObject  parseObject= (JSONObject) jsonObject.parse(JSONSTR);
-        JSONArray  jsonArray=parseObject.getJSONArray("links");
+        JSONObject parseObject = (JSONObject) jsonObject.parse(JSONSTR);
+        JSONArray jsonArray = parseObject.getJSONArray("links");
         for (Object object :
                 jsonArray) {
             JSONObject obj = (JSONObject) object;
-            String  name=obj.getString("name");
-            String  url=obj.getString("url");
-            System.out.println(name+"----"+url);
+            String name = obj.getString("name");
+            String url = obj.getString("url");
+            System.out.println(name + "----" + url);
         }
 
-        System.out.println( getJson( ));
+        System.out.println(getJson());
     }
 
-    public static String getJson( ) {
+    public static String getJson() {
 
-        JSONObject  jsonObject=new JSONObject();
-        JSONArray  array=new JSONArray();
-        JSONObject  bean=new JSONObject();
-        bean.put("name","马云");
-        bean.put("url","www.alibaba.com");
+        JSONObject jsonObject = new JSONObject();
+        JSONArray array = new JSONArray();
+        JSONObject bean = new JSONObject();
+        bean.put("name", "马云");
+        bean.put("url", "www.alibaba.com");
         array.add(bean);
-        JSONObject  bean2=new JSONObject();
-        bean2.put("name","马华腾");
-        bean2.put("url","www.tencent.com");
+        JSONObject bean2 = new JSONObject();
+        bean2.put("name", "马华腾");
+        bean2.put("url", "www.tencent.com");
         array.add(bean2);
-        jsonObject.put("links",array);
+        jsonObject.put("links", array);
 //        System.out.println(jsonObject.toJSONString());
 
 
