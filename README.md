@@ -10,7 +10,14 @@ Java课程的仓库2015-08-26星期三惠普培训中心
  *******************************************/
 
 
-2019-06-15 java类对象的加载几种方式,CLass.forName().newInsteance().只能是无参的构造函数.
-           Thread类的三种特性,Volatile不保证原子性,间断性的输出奇偶数.使用俩个线程,读取格式XML
-           JSON.模拟Spring的IOC容器,初始化bean.
+#2019-06-15 java类对象的加载几种方式,CLass.forName().newInsteance().只能是无参的构造函数.
+ *          Thread类的三种特性,Volatile不保证原子性,间断性的输出奇偶数.使用俩个线程,读取格式XML
+ *         JSON.模拟Spring的IOC容器,初始化bean.
            
+#20190620.多线程通讯,俩个线程间断性的输出奇偶数,竞争一个资源,单实例的安全性.
+ *           Java编发编程实现Demo,数据交换格式,自定义注解模拟SpringIOC的底层实现,
+  *          自定义注解和设计模式(工厂,抽象,代理)
+  *          Java网络编程之Socket(UDP&TCP)
+  *           Maven项目管理,Pom-Module_webapp,tomcat正常运行,Git提交源码
+  *         深入了解Servlet;
+  *         深入学习Spring事务;
